@@ -1,0 +1,29 @@
+---
+import config from '../config'
+import BaseHead from '../components/BaseHead.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+import '@fontsource/sora/400.css'
+import '@fontsource/sora/500.css'
+import '@fontsource/sora/700.css'
+
+const {
+  meta: { title, description = config.description },
+} = Astro.props
+---
+
+<html lang={config.lang}>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body
+    class="text-lightModeText dark:text-darkModeText mx-auto max-w-[900px] bg-lightModeBg dark:bg-darkModeBg"
+  >
+    <Nav />
+    <main class="min-h-[calc(100dvh-90px-70px)]">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
