@@ -9,6 +9,13 @@ export default {
       fontFamily: {
         sans: ['Sora', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        lightModeBg: '#E6E6E6',
+        darkModeBg: '#1A1A1A',
+        accentColor: '#562EC6',
+        lightModeText: 'black',
+        darkModeText: 'white',
+      },
     },
   },
   plugins: [],
