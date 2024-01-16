@@ -1,7 +1,8 @@
 ---
-title: 'Second post'
+layout: '../../layouts/BlogPost.astro'
+title: 'Third post'
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 01 2024'
+pubDate: 'Jan 04 2024'
 tags: ['astro', 'blogging', 'learning']
 ---
 
