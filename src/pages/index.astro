@@ -1,36 +1,27 @@
 ---
 import Base from '../layouts/Base.astro'
 import config from '../config'
-import { getCollection } from 'astro:content'
 
-const posts = await getCollection('blog')
-posts.sort(
+const allPosts = await Astro.glob('./posts/*')
+allPosts.sort(
   (a, b) =>
-    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+    new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf(),
 )
-
-const dateFormat = new Intl.DateTimeFormat('en-GB', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-})
 ---
 
 <Base meta={{ title: config.title }}>
   {
-    posts.map(({ data, slug }) => (
+    allPosts.map((post) => (
       <div class="mb-[60px] last:mb-0">
         <div class="w-max">
-          <a
-            class="group text-accentColor duration-200"
-            href={`/posts/${slug}`}
-          >
-            <h2 class="text-2xl font-medium">{data.title}</h2>
+          <a class="group text-accentColor duration-200" href={post.url}>
+            <h2 class="text-2xl font-medium">{post.frontmatter.title}</h2>
             <span class="relative bottom-0.5 block h-0.5 max-w-0 bg-accentColor transition-all duration-300 group-hover:max-w-full" />
           </a>
         </div>
         <p class="mb-5 mt-2.5 leading-relaxed tracking-wide">
-          {data.description}
+          {post.frontmatter.description}
         </p>
         <div class="flex items-center">
           <svg
@@ -46,7 +37,7 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', {
             />
           </svg>
           <p class="text-sm leading-5 tracking-wide">
-            {dateFormat.format(data.pubDate)}
+            {post.frontmatter.pubDate}
           </p>
         </div>
       </div>
