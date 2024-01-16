@@ -1,0 +1,15 @@
+---
+import Base from './Base.astro'
+import config from '../config'
+const { frontmatter } = Astro.props
+import '../global.css'
+---
+
+<Base meta={{ title: config.title }}>
+  <div
+    class="prose-lightMode dark:prose-darkMode prose w-full min-w-full leading-loose tracking-wide text-lightModeText prose-headings:font-medium prose-headings:text-accentColor prose-a:text-lightModeText prose-blockquote:text-lightModeText prose-strong:text-lightModeText prose-ol:text-lightModeText prose-ul:text-lightModeText prose-table:text-lightModeText prose-tr:text-lightModeText prose-td:text-lightModeText dark:text-darkModeText dark:prose-a:dark:text-darkModeText dark:prose-blockquote:text-darkModeText dark:prose-strong:text-darkModeText dark:prose-ol:text-darkModeText dark:prose-ul:text-darkModeText dark:prose-table:text-darkModeText dark:prose-tr:text-darkModeText dark:prose-td:text-darkModeText"
+  >
+    <h2 class="text-4xl">{frontmatter.title}</h2>
+    <slot />
+  </div>
+</Base>
