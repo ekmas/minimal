@@ -16,6 +16,25 @@ export default {
         lightModeText: 'black',
         darkModeText: 'white',
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      typography: (theme: any) => ({
+        lightMode: {
+          css: {
+            '--tw-prose-kbd': theme('colors.lightModeText'),
+            '--tw-prose-quote-borders': theme('colors.lightModeText'),
+            '--tw-prose-bullets': theme('colors.lightModeText'),
+            '--tw-prose-code': theme('colors.lightModeText'),
+          },
+        },
+        darkMode: {
+          css: {
+            '--tw-prose-kbd': theme('colors.darkModeText'),
+            '--tw-prose-quote-borders': theme('colors.darkModeText'),
+            '--tw-prose-bullets': theme('colors.darkModeText'),
+            '--tw-prose-code': theme('colors.darkModeText'),
+          },
+        },
+      }),
     },
   },
   plugins: [require('@tailwindcss/typography')],
