@@ -16,7 +16,7 @@ allPosts.sort(
       <div class="mb-[60px] last:mb-0">
         <div class="w-max">
           <a
-            transition:name={post.frontmatter.title}
+            transition:name={post.frontmatter.title + post.frontmatter.pubDate}
             class="group text-accentColor duration-200"
             href={post.url}
           >
@@ -28,7 +28,7 @@ allPosts.sort(
           {post.frontmatter.description}
         </p>
         <div
-          transition:name={post.frontmatter.pubDate}
+          transition:name={post.frontmatter.pubDate + post.frontmatter.title}
           class="flex w-max items-center"
         >
           <svg
