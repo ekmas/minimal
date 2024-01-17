@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro'
+
+export async function getStaticPaths(): Promise<any> {
+  const allPosts = await Astro.glob('../posts/*')
+
+  const uniqueTags = [
+    ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+  ]
+
+  return uniqueTags.map((tag: any) => {
+    const filteredPosts = allPosts.filter((post: any) =>
+      post.frontmatter.tags.includes(tag),
+    )
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    }
+  })
+}
+
+const { tag } = Astro.params
+const { posts }: { posts: any } = Astro.props
+---
+
+<Base meta={{ title: 'Posts tagged with ' + tag }}>
+  <h2 class="mb-10 text-2xl font-medium tracking-wide text-accentColor">
+    Posts tagged with <span transition:name={tag} class="text-white"
+      >#{tag}</span
+    >
+  </h2>
+  <div>
+    {
+      posts.map((post: any) => (
+        <div class="mb-[60px] last:mb-0">
+          <div class="w-max">
+            <a
+              transition:name={
+                post.frontmatter.title + post.frontmatter.pubDate
+              }
+              class="group text-accentColor duration-200"
+              href={post.url}
+            >
+              <h2 class="text-2xl font-medium">{post.frontmatter.title}</h2>
+              <span class="relative bottom-0.5 block h-0.5 max-w-0 bg-accentColor transition-all duration-300 group-hover:max-w-full" />
+            </a>
+          </div>
+          <p class="mb-5 mt-2.5 leading-relaxed tracking-wide">
+            {post.frontmatter.description}
+          </p>
+          <div
+            transition:name={post.frontmatter.pubDate + post.frontmatter.title}
+            class="flex w-max items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mr-3 h-4 w-4"
+              viewBox="-0.5 0 15 15"
+            >
+              <path
+                class="fill-lightModeText dark:fill-darkModeText"
+                fill-rule="evenodd"
+                d="M61,154.006845 C61,153.45078 61.4499488,153 62.0068455,153 L73.9931545,153 C74.5492199,153 75,153.449949 75,154.006845 L75,165.993155 C75,166.54922 74.5500512,167 73.9931545,167 L62.0068455,167 C61.4507801,167 61,166.550051 61,165.993155 L61,154.006845 Z M62,157 L74,157 L74,166 L62,166 L62,157 Z M64,152.5 C64,152.223858 64.214035,152 64.5046844,152 L65.4953156,152 C65.7740451,152 66,152.231934 66,152.5 L66,153 L64,153 L64,152.5 Z M70,152.5 C70,152.223858 70.214035,152 70.5046844,152 L71.4953156,152 C71.7740451,152 72,152.231934 72,152.5 L72,153 L70,153 L70,152.5 Z"
+                transform="translate(-61 -152)"
+              />
+            </svg>
+            <p class="text-sm leading-5 tracking-wide">
+              {post.frontmatter.pubDate}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Base>
