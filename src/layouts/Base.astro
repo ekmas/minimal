@@ -18,10 +18,12 @@ const {
     <BaseHead title={title} description={description} />
   </head>
   <body
-    class="mx-auto max-w-[900px] bg-lightModeBg text-lightModeText dark:bg-darkModeBg dark:text-darkModeText"
+    class="scrollbar scrollbar-thumb-accentColor mx-auto max-w-[900px] bg-lightModeBg px-5 text-lightModeText dark:bg-darkModeBg dark:text-darkModeText"
   >
     <Nav />
-    <main class="min-h-[calc(100dvh-90px-70px)] py-10">
+    <main
+      class="w500:min-h-[calc(100dvh-110px-70px)] min-h-[calc(100dvh-90px-70px)] py-10"
+    >
       <slot />
     </main>
     <Footer />

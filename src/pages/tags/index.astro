@@ -5,12 +5,17 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())]
 ---
 
 <Base meta={{ title: 'Tags' }}>
-  <h2 class="text-2xl font-medium tracking-wide text-accentColor">Tags</h2>
+  <h2 class="w500:text-lg text-2xl font-medium tracking-wide text-accentColor">
+    Tags
+  </h2>
 
   <div class="mt-4 flex flex-wrap gap-5">
     {
       tags.map((tag) => (
-        <a class="inline-block text-lg underline" href={`/tags/${tag}`}>
+        <a
+          class="w500:text-sm inline-block text-lg underline"
+          href={`/tags/${tag}`}
+        >
           #{tag}
         </a>
       ))
