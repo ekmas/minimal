@@ -3,9 +3,9 @@ const { title, date, tags } = Astro.props
 ---
 
 <div class="mb-5">
-  <h2 transition:name={title + date} class="my-0 w-max text-4xl">{title}</h2>
+  <h2 class="my-0 w-max text-4xl">{title}</h2>
   <div class="flex items-center justify-between">
-    <div transition:name={date + title} class="flex items-center">
+    <div class="flex items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="mr-3 h-4 w-4"
@@ -24,11 +24,7 @@ const { title, date, tags } = Astro.props
     <div class="flex items-center">
       {
         tags.map((tag: string) => (
-          <a
-            class="ml-5 text-sm first:ml-0"
-            transition:name={tag}
-            href={`/tags/${tag}`}
-          >
+          <a class="ml-5 text-sm first:ml-0" href={`/tags/${tag}`}>
             #{tag}
           </a>
         ))

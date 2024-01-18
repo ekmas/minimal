@@ -25,7 +25,7 @@ const { posts }: { posts: any } = Astro.props
 
 <Base meta={{ title: 'Posts tagged with ' + tag }}>
   <h2 class="mb-10 text-2xl font-medium tracking-wide text-accentColor">
-    Posts tagged with <span transition:name={tag} class="text-white"
+    Posts tagged with <span class="text-lightModeText dark:text-darkModeText"
       >#{tag}</span
     >
   </h2>
@@ -34,13 +34,7 @@ const { posts }: { posts: any } = Astro.props
       posts.map((post: any) => (
         <div class="mb-[60px] last:mb-0">
           <div class="w-max">
-            <a
-              transition:name={
-                post.frontmatter.title + post.frontmatter.pubDate
-              }
-              class="group text-accentColor duration-200"
-              href={post.url}
-            >
+            <a class="group text-accentColor duration-200" href={post.url}>
               <h2 class="text-2xl font-medium">{post.frontmatter.title}</h2>
               <span class="relative bottom-0.5 block h-0.5 max-w-0 bg-accentColor transition-all duration-300 group-hover:max-w-full" />
             </a>
@@ -48,10 +42,7 @@ const { posts }: { posts: any } = Astro.props
           <p class="mb-5 mt-2.5 leading-relaxed tracking-wide">
             {post.frontmatter.description}
           </p>
-          <div
-            transition:name={post.frontmatter.pubDate + post.frontmatter.title}
-            class="flex w-max items-center"
-          >
+          <div class="flex w-max items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="mr-3 h-4 w-4"
