@@ -16,6 +16,10 @@ export default {
         lightModeText: 'black',
         darkModeText: 'white',
       },
+      screens: {
+        w500: { max: '500px' },
+        w400: { max: '400px' },
+      },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       typography: (theme: any) => ({
         lightMode: {
@@ -38,5 +42,5 @@ export default {
     },
   },
   darkMode: 'class',
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('tailwind-scrollbar')],
 } satisfies Config
