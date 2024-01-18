@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import typography from '@tailwindcss/typography'
+import scrollbar from 'tailwind-scrollbar'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -42,5 +44,5 @@ export default {
     },
   },
   darkMode: 'class',
-  plugins: [require('@tailwindcss/typography'), require('tailwind-scrollbar')],
+  plugins: [typography, scrollbar],
 } satisfies Config
