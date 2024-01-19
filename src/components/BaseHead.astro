@@ -12,6 +12,8 @@ const { title, description } = Astro.props
 
 const siteTitle = title ?? config.title
 const siteDescription = description ?? config.description
+
+import { AstroFont } from 'astro-font'
 ---
 
 <!-- Global Metadata -->
@@ -40,3 +42,17 @@ const siteDescription = description ?? config.description
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={siteTitle} />
 <meta property="twitter:description" content={siteDescription} />
+
+<AstroFont
+config={[
+  {
+    src: [],
+    name: "Sora",
+    preload: false,
+    display: "swap",
+    fallback: "sans-serif",
+    cssVariable: "font-sora",
+    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&display=swap',
+  },
+]}
+/>
