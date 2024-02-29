@@ -7,7 +7,8 @@ import PostInfo from '../components/PostInfo.astro'
 
 <Base meta={{ title: frontmatter.title }}>
   <div
-    class="w500:prose-h1:text-xl w500:prose-h2:text-lg w500:prose-h3:text-base w500:prose-h4:text-sm w500:prose-h5:text-sm w500:prose-h6:text-sm w500:text-sm w400:text-xs w400:leading-[2.2] w500:leading-[2.2] prose prose-lightMode w-full min-w-full leading-loose tracking-wide text-lightModeText dark:prose-darkMode prose-headings:font-medium prose-headings:text-accentColor prose-a:text-lightModeText prose-blockquote:text-lightModeText prose-strong:text-lightModeText prose-ol:text-lightModeText prose-ul:text-lightModeText prose-table:text-lightModeText prose-tr:text-lightModeText prose-td:text-lightModeText dark:text-darkModeText dark:prose-a:dark:text-darkModeText dark:prose-blockquote:text-darkModeText dark:prose-strong:text-darkModeText dark:prose-ol:text-darkModeText dark:prose-ul:text-darkModeText dark:prose-table:text-darkModeText dark:prose-tr:text-darkModeText dark:prose-td:text-darkModeText"
+    id="markdown"
+    class="prose prose-lightMode w-full min-w-full leading-loose tracking-wide text-lightModeText dark:prose-darkMode prose-headings:font-medium prose-headings:text-accentColor prose-a:text-lightModeText prose-blockquote:text-lightModeText prose-strong:text-lightModeText prose-ol:text-lightModeText prose-ul:text-lightModeText prose-table:text-lightModeText prose-tr:text-lightModeText prose-td:text-lightModeText dark:text-darkModeText dark:prose-a:dark:text-darkModeText dark:prose-blockquote:text-darkModeText dark:prose-strong:text-darkModeText dark:prose-ol:text-darkModeText dark:prose-ul:text-darkModeText dark:prose-table:text-darkModeText dark:prose-tr:text-darkModeText dark:prose-td:text-darkModeText w500:text-sm w500:leading-[2.2] w500:prose-h1:text-xl w500:prose-h2:text-lg w500:prose-h3:text-base w500:prose-h4:text-sm w500:prose-h5:text-sm w500:prose-h6:text-sm w400:text-xs w400:leading-[2.2]"
   >
     <PostInfo
       title={frontmatter.title}
@@ -17,3 +18,20 @@ import PostInfo from '../components/PostInfo.astro'
     <slot />
   </div>
 </Base>
+
+<style is:global>
+  #markdown code:not(pre)::before,
+  #markdown code:not(pre)::after {
+    content: '';
+  }
+
+  html.dark #markdown code:not(pre code) {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  html #markdown code:not(pre code) {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: 10px;
+  }
+</style>
