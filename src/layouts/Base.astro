@@ -3,6 +3,7 @@ import config from '../config'
 import BaseHead from '../components/BaseHead.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import { ViewTransitions } from 'astro:transitions'
 
 import '@fontsource/sora/400.css'
 import '@fontsource/sora/500.css'
@@ -16,6 +17,7 @@ const {
 <html lang={config.lang}>
   <head>
     <BaseHead title={title} description={description} />
+    <ViewTransitions />
   </head>
   <body
     class="scrollbar scrollbar-thumb-accentColor mx-auto max-w-[900px] bg-lightModeBg px-5 text-lightModeText dark:bg-darkModeBg dark:text-darkModeText"
@@ -27,5 +29,22 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <script>
+      function colorMode() {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      }
+
+      colorMode();
+      document.addEventListener("astro:after-swap", colorMode);
+    </script>
   </body>
 </html>
