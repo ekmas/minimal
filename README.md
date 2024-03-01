@@ -13,6 +13,7 @@ Minimal is a minimalistic astro theme for blogs.
 - Responsive & SEO-friendly
 - Dark/Light mode support
 - MD & MDX posts
+- View Transitions API
 - Shiki code syntax styling
 - Icons by [Svgrepo](https://www.svgrepo.com/)
 
