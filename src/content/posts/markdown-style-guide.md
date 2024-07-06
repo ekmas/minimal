@@ -1,9 +1,8 @@
 ---
-layout: '../../layouts/BlogPost.astro'
-title: 'Markdown Style Guide'
-description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
-pubDate: 'Jan 07 2024'
-tags: ['guide', 'style', 'markdown']
+title: "Markdown Style Guide"
+description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
+pubDate: "Jan 07 2024"
+tags: ["guide", "style", "markdown"]
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

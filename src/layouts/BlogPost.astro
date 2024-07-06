@@ -1,8 +1,10 @@
 ---
-import Base from './Base.astro'
+import '@/global.css'
+
+import Base from '@/layouts/Base.astro'
+import PostInfo from '@/components/PostInfo.astro'
+
 const { frontmatter } = Astro.props
-import '../global.css'
-import PostInfo from '../components/PostInfo.astro'
 ---
 
 <Base meta={{ title: frontmatter.title }}>

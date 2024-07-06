@@ -3,7 +3,7 @@ module.exports = {
   ignorePatterns: ['node_modules', 'dist'],
   root: true,
   env: {
-    node: true,
+    node: true
   },
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier'],
@@ -13,14 +13,14 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
     'plugin:astro/recommended',
-    'plugin:astro/jsx-a11y-recommended',
+    'plugin:astro/jsx-a11y-recommended'
   ],
   rules: {
     '@typescript-eslint/no-var-requires': 'warn',
     '@typescript-eslint/no-unused-vars': [
       'warn',
-      { varsIgnorePattern: 'Props', ignoreRestSiblings: true },
-    ],
+      { varsIgnorePattern: 'Props', ignoreRestSiblings: true }
+    ]
   },
   overrides: [
     {
@@ -28,22 +28,22 @@ module.exports = {
       parser: 'astro-eslint-parser',
       parserOptions: {
         parser: '@typescript-eslint/parser',
-        extraFileExtensions: ['.astro'],
+        extraFileExtensions: ['.astro']
       },
       rules: {
         'astro/jsx-a11y/no-redundant-roles': [
           'error',
           {
-            ul: ['list'],
-          },
+            ul: ['list']
+          }
         ],
         'prettier/prettier': [
           'error',
           {
-            endOfLine: 'auto',
-          },
-        ],
-      },
-    },
-  ],
+            endOfLine: 'auto'
+          }
+        ]
+      }
+    }
+  ]
 }

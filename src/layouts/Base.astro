@@ -1,16 +1,17 @@
 ---
-import config from '../config'
-import BaseHead from '../components/BaseHead.astro'
-import Nav from '../components/Nav.astro'
-import Footer from '../components/Footer.astro'
+import config from '@/config'
 import { ViewTransitions } from 'astro:transitions'
+
+import BaseHead from '@/components/BaseHead.astro'
+import Nav from '@/components/Nav.astro'
+import Footer from '@/components/Footer.astro'
 
 import '@fontsource/sora/400.css'
 import '@fontsource/sora/500.css'
 import '@fontsource/sora/700.css'
 
 const {
-  meta: { title, description = config.description },
+  meta: { title, description = config.description }
 } = Astro.props
 ---
 
@@ -20,31 +21,41 @@ const {
     <ViewTransitions />
   </head>
   <body
-    class="scrollbar scrollbar-thumb-accentColor mx-auto max-w-[900px] bg-lightModeBg px-5 text-lightModeText dark:bg-darkModeBg dark:text-darkModeText"
+    class="mx-auto max-w-[900px] bg-lightModeBg px-5 text-lightModeText scrollbar scrollbar-thumb-accentColor dark:bg-darkModeBg dark:text-darkModeText"
   >
     <Nav />
     <main
-      class="w500:min-h-[calc(100dvh-110px-70px)] min-h-[calc(100dvh-90px-70px)] py-10"
+      class="min-h-[calc(100dvh-90px-70px)] py-10 w500:min-h-[calc(100dvh-110px-70px)]"
     >
       <slot />
     </main>
     <Footer />
 
     <script>
+      import config from '@/config'
+
       function colorMode() {
         if (
-          localStorage.theme === "dark" ||
-          (!("theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
         ) {
-          document.documentElement.classList.add("dark");
+          document.documentElement.classList.add('dark')
+          document.documentElement.setAttribute(
+            'data-theme',
+            config.themes.dark as string
+          )
         } else {
-          document.documentElement.classList.remove("dark");
+          document.documentElement.classList.remove('dark')
+          document.documentElement.setAttribute(
+            'data-theme',
+            config.themes.light as string
+          )
         }
       }
 
-      colorMode();
-      document.addEventListener("astro:after-swap", colorMode);
+      colorMode()
+      document.addEventListener('astro:after-swap', colorMode)
     </script>
   </body>
 </html>
