@@ -1,3 +1,5 @@
+import config from '@/config'
+
 export default function ThemeSwitcher() {
   const handleToggleClick = () => {
     const element = document.documentElement
@@ -5,6 +7,8 @@ export default function ThemeSwitcher() {
 
     const isDark = element.classList.contains('dark')
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
+
+    element.setAttribute('data-theme', config.themes[isDark ? 'dark' : 'light'])
   }
 
   return (
