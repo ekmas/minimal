@@ -39,7 +39,7 @@ const { posts }: { posts: Post[] } = Astro.props
     {
       posts.map((post: Post) => (
         <PostPreview
-          url={post.slug}
+          url={'/' + post.slug}
           title={post.data.title}
           description={post.data.description}
           pubDate={post.data.pubDate}
